@@ -14,7 +14,7 @@ class Node {
       this.next = null;
     }
 }
-public class Main {
+public class InsertAtEnd {
   static Node insertAtEnd (Node head, int val) {
     Node newNode = new Node(val);
     Node temp = head;
