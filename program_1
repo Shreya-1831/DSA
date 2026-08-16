@@ -9,17 +9,36 @@ class Node {
     }
 }
 public class Main {
-    public static void main(String[] args) {
-      Node p = new Node(1);
-      p.next = new Node(2);
-      p.next.next = new Node(3);
-      p.next.next.next = new Node(4);
-      p.next.next.next.next = new Node(5);
-      Node temp = p;
-      while (temp.next != null) {
-        System.out.print(temp.data + " -> ");
-        temp = temp.next;
-      }
-      System.out.print(temp.data + " -> null");
+  static void traverseIteration (Node head){
+    Node temp = head;
+    while (temp.next != null) {
+      System.out.print(temp.data + " -> ");
+      temp = temp.next;
     }
+    System.out.print(temp.data + " -> null");
+  }
+
+  static void traverseRecursion (Node head){
+    Node temp = head;
+    System.out.print(temp.data);
+    if (temp.next == null) {
+      System.out.print(" -> null");
+      return;
+    }
+    if (temp.next != null) {
+      System.out.print(" -> ");
+    }
+    traverseRecursion(temp.next);
+  }
+  
+  public static void main(String[] args) {
+    Node p = new Node(1);
+    p.next = new Node(2);
+    p.next.next = new Node(3);
+    p.next.next.next = new Node(4);
+    p.next.next.next.next = new Node(5);
+    traverseIteration(p);
+    System.out.println();
+    traverseRecursion(p);
+  }
 }
