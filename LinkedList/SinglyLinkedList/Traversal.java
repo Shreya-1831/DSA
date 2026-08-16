@@ -8,7 +8,7 @@ class Node {
       this.next = null;
     }
 }
-public class Main {
+public class Traversal {
   static void traverseIteration (Node head){
     Node temp = head;
     while (temp.next != null) {
