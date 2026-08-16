@@ -14,15 +14,17 @@ class Node {
       this.next = null;
     }
 }
-public class InsertAtEnd {
+public class Main {
   static Node insertAtEnd (Node head, int val) {
     Node newNode = new Node(val);
-    Node temp = head;
-    while (temp.next != null){
-      temp = temp.next;
+    Node last = head;
+    if (last == null){
+      return newNode;
     }
-    temp.next = newNode;
-    newNode.next = null;
+    while (last.next != null){
+      last = last.next;
+    }
+    last.next = newNode;
     return head;
   }
 
