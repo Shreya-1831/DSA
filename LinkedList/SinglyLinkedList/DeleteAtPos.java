@@ -2,7 +2,7 @@ import java.util.*;
 /* 
 OUTPUT 
 Before Deletion: 1 -> 2 -> 3 -> 4 -> 5 -> null
-After Deletion: 1 -> 2 -> 3 -> 4 -> null
+After Deletion: 1 -> 3 -> 4 -> 5 -> null
 */
 
 class Node {
