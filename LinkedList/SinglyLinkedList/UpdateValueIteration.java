@@ -2,9 +2,8 @@ import java.util.*;
 /* 
 OUTPUT 
 Before Updation: 1 -> 2 -> 3 -> 4 -> 5 -> null
-After Updation: 1 -> 2 -> 3 -> 6 -> 5 -> null
-Before Updation: 1 -> 2 -> 3 -> 4 -> 5 -> null
-After Updation: 6 -> 2 -> 3 -> 4 -> 5 -> null
+After Updation with Approach 1: 6 -> 2 -> 3 -> 4 -> 5 -> null
+After Updation with Approach 2: 6 -> 2 -> 3 -> 6 -> 5 -> null
 */
 
 class Node {
@@ -16,15 +15,28 @@ class Node {
     }
 }
 public class UpdateValueIteration {
-  static Node updateValueIteration(Node head, int pos, int val) {
+  static Node updateValueIterationApp1(Node head, int pos, int val) {
     Node temp = head;
-    int curr = 0;
+    int curr = 1;
     while (temp != null) {
       if (curr == pos) {
         temp.data = val;
       }
       temp = temp.next;
       curr++;
+    }
+    return head;
+  }
+
+  static Node updateValueIterationApp2(Node head, int pos, int val) {
+    Node temp = head;
+    int curr = 1;
+    while (temp != null && curr < pos - 1) {
+      temp = temp.next;
+      curr++;
+    }
+    if (temp != null && temp.next != null) {
+      temp.next.data = val;
     }
     return head;
   }
@@ -48,8 +60,11 @@ public class UpdateValueIteration {
     p.next.next.next.next = new Node(5);
     System.out.print("Before Updation: ");
     display(p);
-    p = updateValueIteration(p, 0, 6);
-    System.out.print("After Updation: ");
+    p = updateValueIterationApp1(p, 1, 6);
+    System.out.print("After Updation with Approach 1: ");
     display(p);
+    Node q = updateValueIterationApp1(p, 4, 6);
+    System.out.print("After Updation with Approach 2: ");
+    display(q);
   }
 }
