@@ -1,10 +1,10 @@
 import java.util.*;
 /* 
 OUTPUT 
-Before Updation: 1 -> 2 -> 3 -> 4 -> 5 -> null
-After Updation: 1 -> 2 -> 3 -> 6 -> 5 -> null
-Before Updation: 1 -> 2 -> 3 -> 4 -> 5 -> null
-After Updation: 6 -> 2 -> 3 -> 4 -> 5 -> null
+Before Updation (pos == 4): 1 -> 2 -> 3 -> 4 -> 5 -> null
+After Updation (pos == 4): 1 -> 2 -> 3 -> 6 -> 5 -> null
+Before Updation (pos == 1): 1 -> 2 -> 3 -> 4 -> 5 -> null
+After Updation (pos == 1): 6 -> 2 -> 3 -> 4 -> 5 -> null
 */
 
 class Node {
@@ -21,7 +21,7 @@ public class UpdateValueRecursion {
       return null;
     }
     Node temp = head;
-    if (pos == 0) {
+    if (pos == 1) {
       temp.data = val;
     }
     temp.next = updateValueRecursion(temp.next, pos - 1, val);
@@ -47,7 +47,7 @@ public class UpdateValueRecursion {
     p.next.next.next.next = new Node(5);
     System.out.print("Before Updation: ");
     display(p);
-    p = updateValueRecursion(p, 3, 6);
+    p = updateValueRecursion(p, 2, 6);
     System.out.print("After Updation: ");
     display(p);
   }
