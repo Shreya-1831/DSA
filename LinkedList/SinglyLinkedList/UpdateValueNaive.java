@@ -1,10 +1,10 @@
 import java.util.*;
 /* 
 OUTPUT 
-Before Updation: 1 -> 2 -> 3 -> 4 -> 5 -> null
-After Updation: 1 -> 2 -> 3 -> 6 -> 5 -> null
-Before Updation: 1 -> 2 -> 3 -> 4 -> 5 -> null
-After Updation: 6 -> 2 -> 3 -> 4 -> 5 -> null
+Before Updation with pos = 4: 1 -> 2 -> 3 -> 4 -> 5 -> null
+After Updation with pos = 4: 1 -> 2 -> 3 -> 6 -> 5 -> null
+Before Updation with pos = 1: 1 -> 2 -> 3 -> 4 -> 5 -> null
+After Updation with pos = 1: 6 -> 2 -> 3 -> 4 -> 5 -> null
 */
 
 class Node {
@@ -23,8 +23,8 @@ public class UpdateValueNaive {
       nodes.add(temp);
       temp = temp.next;
     }
-    if (pos >= 0 && pos < nodes.size()) {
-      nodes.get(pos).data = val;
+    if (pos >= 1 && pos < nodes.size()) {
+      nodes.get(pos - 1).data = val;
     }
     return head;
   }
@@ -48,7 +48,7 @@ public class UpdateValueNaive {
     p.next.next.next.next = new Node(5);
     System.out.print("Before Updation: ");
     display(p);
-    p = updateValueNaive(p, 0, 6);
+    p = updateValueNaive(p, 4, 6);
     System.out.print("After Updation: ");
     display(p);
   }
