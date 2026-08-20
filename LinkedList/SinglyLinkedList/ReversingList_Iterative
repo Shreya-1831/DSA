@@ -4,6 +4,7 @@ OUTPUT
 List Elements: 1 -> 2 -> 3 -> 4 -> 5 -> null
 Reversing using iterative two pointers: 5 -> 4 -> 3 -> 2 -> 1 -> null
 Reversing using iterative three pointers: 5 -> 4 -> 3 -> 2 -> 1 -> null
+Reversing using stack approach: 5 -> 4 -> 3 -> 2 -> 1 -> null
 */
 
 class Node {
@@ -40,6 +41,25 @@ public class ReversingList_Iterative {
     return prev;
   }
 
+  static Node stackApproach(Node head) {
+    Stack <Node> stack = new Stack<>();
+    Node temp = head;
+    while (temp != null) {
+      stack.push(temp);
+      temp = temp.next;
+    }
+    if (!stack.isEmpty()) {
+      head = stack.pop();
+      temp = head;
+      while (!stack.isEmpty()) {
+        temp.next = stack.pop();
+        temp = temp.next;
+      }
+      temp.next = null;
+    }
+    return head;
+  }
+
   static void display(Node head) {
     Node temp = head;
     if (temp == null) {
@@ -66,5 +86,9 @@ public class ReversingList_Iterative {
     Node app2 = threePointers(p);
     System.out.print("Reversing using iterative three pointers: ");
     display(app2);
+    p = threePointers(app2);
+    Node app3 = stackApproach(p);
+    System.out.print("Reversing using stack approach: ");
+    display(app3);
   }
 }
