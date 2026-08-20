@@ -1,0 +1,70 @@
+import java.util.*;
+/* 
+OUTPUT 
+List Elements: 1 -> 2 -> 3 -> 4 -> 5 -> null
+Reversing using iterative two pointers: 5 -> 4 -> 3 -> 2 -> 1 -> null
+Reversing using iterative three pointers: 5 -> 4 -> 3 -> 2 -> 1 -> null
+*/
+
+class Node {
+    int data;
+    Node next;
+    Node (int val) {
+      this.data = val;
+      this.next = null;
+    }
+}
+public class ReversingList_Iterative {
+  static Node twoPointers(Node head) {
+    Node curr = head;
+    Node prev = null;
+    while (curr != null) {
+      Node next = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = next;
+    }
+    return prev;
+  }
+
+  static Node threePointers(Node head) {
+    Node curr = head;
+    Node prev = null;
+    Node next;
+    while (curr != null) {
+      next = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = next;
+    }
+    return prev;
+  }
+
+  static void display(Node head) {
+    Node temp = head;
+    if (temp == null) {
+      System.out.println("null");
+      return;
+    } else {
+      System.out.print(temp.data + " -> ");
+    }
+    display(temp.next);
+  }
+  
+  public static void main(String[] args) {
+    Node p = new Node(1);
+    p.next = new Node(2);
+    p.next.next = new Node(3);
+    p.next.next.next = new Node(4);
+    p.next.next.next.next = new Node(5);
+    System.out.print("List Elements: ");
+    display(p);
+    Node app1 = twoPointers(p);
+    System.out.print("Reversing using iterative two pointers: ");
+    display(app1);
+    p = twoPointers(app1);
+    Node app2 = threePointers(p);
+    System.out.print("Reversing using iterative three pointers: ");
+    display(app2);
+  }
+}
