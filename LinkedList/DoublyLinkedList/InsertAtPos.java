@@ -4,7 +4,7 @@ List elements before insertion at pos = 2:
 1 <-> 2 <-> 3 <-> 4 <-> 5 <-> null
 List elements after insertion at pos = 2 by first approach: 
 1 <-> 6 <-> 2 <-> 3 <-> 4 <-> 5 <-> null
-List elements after insertion at pos = 2 by second approach: 
+List elements after insertion at pos = 5 by second approach: 
 1 <-> 6 <-> 2 <-> 3 <-> 8 <-> 4 <-> 5 <-> null
 */
 
@@ -98,7 +98,7 @@ public class InsertAtPos{
     System.out.println("List elements after insertion at pos = 2 by first approach: ");
     display(first);
     first = insertionapp2(first, 5, 8);
-    System.out.println("List elements after insertion at pos = 2 by second approach: ");
+    System.out.println("List elements after insertion at pos = 5 by second approach: ");
     display(first);
   }
 }
